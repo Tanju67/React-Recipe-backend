@@ -5,11 +5,12 @@ const {
   login,
   getCurentUser,
 } = require("../controllers/auth-controllers");
+const checkAuth = require("../middleware/auth");
 
 router.post("/register", register);
 
 router.post("/login", login);
 
-router.get("/currentUser", getCurentUser);
+router.get("/currentUser", checkAuth, getCurentUser);
 
 module.exports = router;
