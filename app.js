@@ -8,7 +8,8 @@ const app = express();
 
 const connectDB = require("./db/connect");
 
-const authRoutse = require("./routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");
+const recipeRoutes = require("./routes/recipeRoutes");
 
 const notFound = require("./middleware/not-found");
 const errorHandler = require("./middleware/error-handler");
@@ -17,7 +18,8 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
 
-app.use("/api/v1/auth", authRoutse);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/recipe", recipeRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
